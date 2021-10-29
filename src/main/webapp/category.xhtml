@@ -5,31 +5,37 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>PrimeFaces Test</title>
+<title>Category</title>
 </h:head>
 <h:body>
 <h:form>
 <p:panel header="Category">
 
-<h:panelGrid columns="4">
+<p:growl life="6000" >
+<p:autoUpdate/>
+</p:growl>
+
+<h:panelGrid id="dataPanel" columns="4">
 		<p:outputLabel value="Id" />
-		<p:inputText readonly="true" size="10" />
+		<p:inputText readonly="true" size="10"  value="#{categoryBean.category.id}"/>
 
 		<p:outputLabel value="Name" />
-		<p:inputText maxlength="50" size="30" />
+		<p:inputText maxlength="50" size="30" value="#{categoryBean.category.name}" required="true" />
 	</h:panelGrid>
 
 	<p:panelGrid>
-		<p:commandButton value="Salvar" />
+		<p:commandButton value="Salvar" actionListener="#{categoryBean.save}" update="dataPanel"/>
 	</p:panelGrid>
 
 	<p:separator />
 	
-	<p:dataTable paginator="true">
+	<p:dataTable paginator="true" value="#{categoryBean.categories}" var="cursor">
 		<p:column headerText="Id">
+		#{cursor.id}
 		</p:column>
 		
 		<p:column headerText="Name">
+		#{cursor.name}
 		</p:column>
 		
 		<p:column headerText="Options">

@@ -36,4 +36,5 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/jboss/weld/module/weld-web/3.1.4.Final/weld-web-3.1.4.Final.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/jboss/spec/javax/el/jboss-el-api_3.0_spec/2.0.0.Final/jboss-el-api_3.0_spec-2.0.0.Final.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/jboss/classfilewriter/jboss-classfilewriter/1.2.4.Final/jboss-classfilewriter-1.2.4.Final.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/omnifaces/omnifaces/3.5/omnifaces-3.5.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>
