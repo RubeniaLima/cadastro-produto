@@ -23,14 +23,16 @@ public class ProductDAO {
 
 		section.close();
 	}
-	
+
 	public Product serchById(Long id) {
 		EntityManager section = JpaUtil.getEntityManager();
 		Product product = section.find(Product.class, id);
 		return product;
 	}
-	
-	public List<Product> list(){
+
+	@SuppressWarnings("unchecked")
+	public List<Product> listAll() {
+		
 		String jpql = "select p from Product p order by name";
 		EntityManager section = JpaUtil.getEntityManager();
 		Query query = section.createQuery(jpql);

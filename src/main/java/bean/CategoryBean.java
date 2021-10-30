@@ -36,6 +36,7 @@ public class CategoryBean implements Serializable{
 		categoryDAO.save(category);
 		category = new Category();
 		Messages.addGlobalInfo("Category saved");
+		list();
 	}
 	
 	public void list() {

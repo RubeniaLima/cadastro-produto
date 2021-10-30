@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Products</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel header="Products">
+
+			<p:growl life="6000">
+				<p:autoUpdate />
+			</p:growl>
+
+			<h:panelGrid id="dataPanel" columns="4">
+				<p:outputLabel value="Id" />
+				<p:inputText readonly="true" size="10" />
+
+				<p:outputLabel value="Name" />
+				<p:inputText maxlength="50" size="30" required="true"
+					requiredMessage="Please Insert Name " />
+
+				<p:outputLabel value="Quatity" />
+				<p:inputText size="10" required="true"
+					requiredMessage="Please Insert Quatity" />
+
+				<p:outputLabel value="Price" />
+				<p:inputText size="10" required="true"
+					requiredMessage="Please Insert Price" />
+
+				<p:outputLabel value="Expiration Date" />
+				<p:calendar required="true"
+					requiredMessage="Please Insert Expiarion Date" pattern="dd/MM/yyyy"
+					size="10" />
+
+				<p:outputLabel value="Category" />
+				<p:selectOneMenu required="true" requiredMessage="Insert Category">
+				<f:selectItem itemLabel="Select Category"/>
+					<f:selectItems value="#{categoryBean.categories}"
+						var="categoryCursor" itemLabel="#{categoryCursor.name}" />
+				</p:selectOneMenu>
+			</h:panelGrid>
+
+			<p:panelGrid>
+				<p:commandButton value="Salvar" update="dataPanel table" />
+			</p:panelGrid>
+
+			<p:separator />
+
+			<p:dataTable id="table" paginator="true">
+
+				<p:column headerText="Id">
+				</p:column>
+
+				<p:column headerText="Name">
+
+				</p:column>
+				<p:column headerText="Quatity">
+
+				</p:column>
+				<p:column headerText="Price">
+				</p:column>
+
+				<p:column headerText="Category">
+				</p:column>
+
+				<p:column headerText="Expiration Date">
+				</p:column>
+
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

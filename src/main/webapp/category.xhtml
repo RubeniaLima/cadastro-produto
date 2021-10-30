@@ -4,44 +4,48 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Category</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Category</title>
 </h:head>
 <h:body>
-<h:form>
-<p:panel header="Category">
+	<h:form>
+		<p:panel header="Category">
 
-<p:growl life="6000" >
-<p:autoUpdate/>
-</p:growl>
+			<p:growl life="6000">
+				<p:autoUpdate />
+			</p:growl>
 
-<h:panelGrid id="dataPanel" columns="4">
-		<p:outputLabel value="Id" />
-		<p:inputText readonly="true" size="10"  value="#{categoryBean.category.id}"/>
+			<h:panelGrid id="dataPanel" columns="4">
+				<p:outputLabel value="Id" />
+				<p:inputText readonly="true" size="10"
+					value="#{categoryBean.category.id}" />
 
-		<p:outputLabel value="Name" />
-		<p:inputText maxlength="50" size="30" value="#{categoryBean.category.name}" required="true" />
-	</h:panelGrid>
+				<p:outputLabel value="Name" />
+				<p:inputText maxlength="50" size="30"
+					value="#{categoryBean.category.name}" required="true" />
+			</h:panelGrid>
 
-	<p:panelGrid>
-		<p:commandButton value="Salvar" actionListener="#{categoryBean.save}" update="dataPanel"/>
-	</p:panelGrid>
+			<p:panelGrid>
+				<p:commandButton value="Salvar"
+					actionListener="#{categoryBean.save}" update="dataPanel table" />
+			</p:panelGrid>
 
-	<p:separator />
-	
-	<p:dataTable paginator="true" value="#{categoryBean.categories}" var="cursor">
-		<p:column headerText="Id">
+			<p:separator />
+
+			<p:dataTable id="table" paginator="true"
+				value="#{categoryBean.categories}" var="cursor">
+				<p:column headerText="Id">
 		#{cursor.id}
 		</p:column>
-		
-		<p:column headerText="Name">
+
+				<p:column headerText="Name">
 		#{cursor.name}
 		</p:column>
-		
-		<p:column headerText="Options">
-		</p:column>
-	</p:dataTable>
-	</p:panel>
+
+				<p:column headerText="Options">
+				</p:column>
+			</p:dataTable>
+		</p:panel>
 	</h:form>
 </h:body>
 </html>
