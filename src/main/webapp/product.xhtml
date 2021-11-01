@@ -18,57 +18,68 @@
 
 			<h:panelGrid id="dataPanel" columns="4">
 				<p:outputLabel value="Id" />
-				<p:inputText readonly="true" size="10" />
+				<p:inputText readonly="true" size="10"
+					value="#{productBean.product.id}" />
 
 				<p:outputLabel value="Name" />
 				<p:inputText maxlength="50" size="30" required="true"
-					requiredMessage="Please Insert Name " />
+					requiredMessage="Please Insert Name "
+					value="#{productBean.product.name}" />
 
 				<p:outputLabel value="Quatity" />
 				<p:inputText size="10" required="true"
-					requiredMessage="Please Insert Quatity" />
+					requiredMessage="Please Insert Quatity"
+					value="#{productBean.product.quantity}" converterMessage="Please insert only numbers in the Quantity field"/>
 
 				<p:outputLabel value="Price" />
 				<p:inputText size="10" required="true"
-					requiredMessage="Please Insert Price" />
+					requiredMessage="Please Insert Price"
+					value="#{productBean.product.price}"  converterMessage="Please insert only numbers in the Price field"/>
 
 				<p:outputLabel value="Expiration Date" />
 				<p:calendar required="true"
 					requiredMessage="Please Insert Expiarion Date" pattern="dd/MM/yyyy"
-					size="10" />
+					size="10" value="#{productBean.product.expirationDate}" />
 
 				<p:outputLabel value="Category" />
-				<p:selectOneMenu required="true" requiredMessage="Insert Category">
-				<f:selectItem itemLabel="Select Category"/>
-					<f:selectItems value="#{categoryBean.categories}"
+				<p:selectOneMenu required="true" requiredMessage="Insert Category"
+					value="#{productBean.product.category}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemLabel="Select Category" />
+					<f:selectItems value="#{productBean.categories}"
 						var="categoryCursor" itemLabel="#{categoryCursor.name}" />
 				</p:selectOneMenu>
 			</h:panelGrid>
 
 			<p:panelGrid>
-				<p:commandButton value="Salvar" update="dataPanel table" />
+				<p:commandButton value="Salvar" update="dataPanel table"
+					actionListener="#{productBean.save}" />
 			</p:panelGrid>
 
 			<p:separator />
 
-			<p:dataTable id="table" paginator="true">
+			<p:dataTable id="table" paginator="true" value="#{productBean.products}" var="productCursor">
 
 				<p:column headerText="Id">
+				#{productCursor.id}
 				</p:column>
 
 				<p:column headerText="Name">
-
+				#{productCursor.name}
 				</p:column>
 				<p:column headerText="Quatity">
-
+				#{productCursor.quantity}
 				</p:column>
 				<p:column headerText="Price">
+				#{productCursor.price}
 				</p:column>
 
 				<p:column headerText="Category">
+				#{productCursor.category.name}
 				</p:column>
 
 				<p:column headerText="Expiration Date">
+				#{productCursor.expirationDate}
 				</p:column>
 
 			</p:dataTable>

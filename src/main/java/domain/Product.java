@@ -37,7 +37,7 @@ public class Product {
 	private LocalDate expirationDate;
 	
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn
 	private Category category;
 
 }
