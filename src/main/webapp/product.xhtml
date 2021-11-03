@@ -55,10 +55,16 @@
 				</p:selectOneMenu>
 			</h:panelGrid>
 
-			<p:panelGrid>
-				<p:commandButton value="Salvar" update="dataPanel table"
+			<h:panelGrid columns="4" cellpadding="2px" cellspacing="10px">
+				<p:commandButton value="Save" icon="ui-icon-disk" update="dataPanel table"
 					actionListener="#{productBean.save}" />
-			</p:panelGrid>
+					
+					<p:commandButton value="Delete"  icon="ui-icon-trash" update="dataPanel table"
+					actionListener="#{productBean.delete}" />
+					
+					<p:commandButton value="Edit"  icon="ui-icon-pencil" update="dataPanel table"
+					actionListener="#{productBean.edit}" />
+			</h:panelGrid>
 
 			<p:separator />
 
@@ -87,6 +93,12 @@
 					<h:outputText value="#{productCursor.expirationDate}">
 						<f:convertDateTime type="localDate" />
 					</h:outputText>
+				</p:column>
+				<p:column>
+					<p:commandButton icon="ui-icon-check"
+					actionListener="#{productBean.select(productCursor)}" 
+					process="@this" update="@form:dataPanel" />
+					
 				</p:column>
 
 			</p:dataTable>

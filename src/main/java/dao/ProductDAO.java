@@ -14,7 +14,6 @@ public class ProductDAO {
 	public void save(Product product) {
 
 		EntityManager section = JpaUtil.getEntityManager();
-
 		EntityTransaction transaction = section.getTransaction();
 
 		transaction.begin();
@@ -24,7 +23,7 @@ public class ProductDAO {
 		section.close();
 	}
 
-	public Product serchById(Long id) {
+	public Product searchById(Long id) {
 		EntityManager section = JpaUtil.getEntityManager();
 		Product product = section.find(Product.class, id);
 		return product;
@@ -32,11 +31,41 @@ public class ProductDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Product> listAll() {
-		
+
 		String jpql = "select p from Product p order by name";
 		EntityManager section = JpaUtil.getEntityManager();
 		Query query = section.createQuery(jpql);
 		List<Product> result = query.getResultList();
 		return result;
 	}
+
+	public void delete(Long id) {
+
+		EntityManager section = JpaUtil.getEntityManager();
+		EntityTransaction transaction = section.getTransaction();
+
+		transaction.begin();
+		Product product = section.find(Product.class, id);
+		section.remove(product);
+		transaction.commit();
+
+		section.close();
+
+	}
+	
+	public void edit(Product product) {
+		
+		EntityManager section = JpaUtil.getEntityManager();
+		EntityTransaction transaction = section.getTransaction();
+
+		transaction.begin();
+		section.merge(product);
+		transaction.commit();
+
+		section.close();
+		
+	}
+	
+	
+
 }
