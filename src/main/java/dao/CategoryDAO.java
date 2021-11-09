@@ -10,8 +10,6 @@ import domain.Category;
 import util.JpaUtil;
 
 public class CategoryDAO {
-	
-	
 
 	public void save(Category category) {
 
@@ -25,19 +23,32 @@ public class CategoryDAO {
 
 		section.close();
 	}
-	
+
 	public Category serchById(Long id) {
 		EntityManager section = JpaUtil.getEntityManager();
 		Category category = section.find(Category.class, id);
 		return category;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Category> listAll(){
+	public List<Category> listAll() {
 		String jpql = "select c from Category c order by name";
 		EntityManager section = JpaUtil.getEntityManager();
 		Query query = section.createQuery(jpql);
 		List<Category> result = query.getResultList();
 		return result;
+	}
+
+	public void edit(Category category) {
+
+		EntityManager section = JpaUtil.getEntityManager();
+		EntityTransaction transaction = section.getTransaction();
+
+		transaction.begin();
+		section.merge(category);
+		transaction.commit();
+
+		section.close();
+
 	}
 }

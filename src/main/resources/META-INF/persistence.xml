@@ -3,23 +3,24 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="cadastroproduto"
+	<persistence-unit name="productDB"
 		transaction-type="RESOURCE_LOCAL">
+		
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
-				value="com.mysql.cj.jdbc.Driver" />
+				value="org.h2.Driver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/testejpa" />
-			<property name="javax.persistence.jdbc.user" value=" root" />
+				value="jdbc:h2:mem:productDB" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password"
-				value=" Azul2608" />
+				value="" />
 			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.MySQL8Dialect" />
+				value="org.hibernate.dialect.H2Dialect" />
 
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 		</properties>
 	</persistence-unit>
 </persistence>

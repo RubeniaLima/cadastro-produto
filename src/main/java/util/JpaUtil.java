@@ -6,12 +6,14 @@ import javax.persistence.Persistence;
 
 public class JpaUtil {
 	
-	private static EntityManagerFactory factory =  Persistence.createEntityManagerFactory("cadastroproduto");
+	private static EntityManagerFactory factory =  Persistence.createEntityManagerFactory("productDB");
 	
 	public static EntityManager getEntityManager() {
 		
 	EntityManager section = factory.createEntityManager();
 	return section;
 	}
+	
+
 
 }

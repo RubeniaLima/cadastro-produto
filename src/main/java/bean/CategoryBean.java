@@ -25,21 +25,34 @@ public class CategoryBean implements Serializable{
 	
 	@PostConstruct
 	public void start() {
-		category = new Category();
 		categoryDAO =  new CategoryDAO();
-		list();
+		cleanAndRechargeView();
 		
 	}
 		
 	
 	public void save() {
 		categoryDAO.save(category);
-		category = new Category();
+		
 		Messages.addGlobalInfo("Category saved");
-		list();
+		cleanAndRechargeView();
 	}
 	
-	public void list() {
+	public void select(Category selectedCategory) {
+		category = selectedCategory;
+	}
+	
+	public void edit() {
+		categoryDAO.edit(category);
+		cleanAndRechargeView();
+		Messages.addGlobalInfo("Category edited.");
+
+	}
+	
+	public void cleanAndRechargeView() {
+		category = new Category();
 		categories = categoryDAO.listAll();
 	}
+	
+	
 }

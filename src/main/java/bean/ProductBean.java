@@ -38,29 +38,37 @@ public class ProductBean implements Serializable {
 	}
 
 	public void save() {
-       productDAO.save(product);
+		productDAO.save(product);
 		cleanAndRechargeView();
 		Messages.addGlobalInfo("Product saved");
-       
+
 	}
-	
+
 	public void select(Product selectedProduct) {
 		product = selectedProduct;
 	}
-	
+
 	public void delete() {
 		productDAO.delete(product.getId());
 		cleanAndRechargeView();
 		Messages.addGlobalInfo("Product deleted.");
 	}
-	
+
 	public void edit() {
 		productDAO.edit(product);
 		cleanAndRechargeView();
 		Messages.addGlobalInfo("Product edited.");
 
 	}
-	
+
+	public void searchById(Long id) {
+
+		productDAO.searchById(id);
+
+		cleanAndRechargeView();
+
+	}
+
 	public void cleanAndRechargeView() {
 		product = new Product();
 		categories = categoryDAO.listAll();
